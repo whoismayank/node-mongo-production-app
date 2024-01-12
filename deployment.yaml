@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-production-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-production
+  template:
+    metadata:
+      labels:
+        app: nodejs-production
+    spec:
+      containers:
+      - name: nodejs-production
+        image: tcmahendra/nodejs-production-app:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: nodejs-production-config
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-production-service
+spec:
+  type: NodePort
+  selector:
+    app: nodejs-production
+  ports:
+    - port: 8080
+      targetPort: 8080

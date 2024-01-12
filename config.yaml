@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nodejs-production-config
+  namespace: default
+data:
+  PORT: "8080"
+  MONGODB_URL: "mongodb+srv://taskcraft:taskcraft@cluster0.nqxtj.mongodb.net/node-production-app?retryWrites=true&w=majority"
+  JWT_SECRET: "thisisasamplesecret"
+  JWT_ACCESS_EXPIRATION_MINUTES: "30"
+  JWT_REFRESH_EXPIRATION_DAYS: "30"
+  JWT_RESET_PASSWORD_EXPIRATION_MINUTES: "10"
+  JWT_VERIFY_EMAIL_EXPIRATION_MINUTES: "10"
+  SMTP_HOST: "smtp.ethereal.email"
+  SMTP_PORT: "587"
+  SMTP_USERNAME: "allene.lindgren33@ethereal.email"
+  SMTP_PASSWORD: "XpsMp5V7fyd14gDZpT"
+  EMAIL_FROM: "allene.lindgren33@ethereal.email"
